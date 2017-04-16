@@ -9,7 +9,7 @@
 					</button>
 				</form>
 
-				<a href="community/{{ $link->channel->slug }}" class="label label-default" style="background-color:{{ $link->channel->color }}">
+				<a href="{{ URL::to('/community/'.$link->channel->slug) }}" class="label label-default" style="background-color:{{ $link->channel->color }}">
 					{{ $link->channel->title }}
 				</a>
 				<a href="{{ $link->link }}" target="_blank">
@@ -24,4 +24,4 @@
 		<li class="links__link">No Contributions yet.</li>
 	@endif
 </ul>
-{{ $links->links() }}
+{{ $links->appends(request()->query())->links() }}
