@@ -32,6 +32,10 @@ class CommunityLinkForm extends Request
         ];
     }
 
+    /**
+     * persist to the table
+     * @return boolean
+     */
     public function persist()
     {
         CommunityLink::from(Auth::user())
