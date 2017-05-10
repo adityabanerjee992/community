@@ -11,7 +11,12 @@ use App\Exceptions\CommunityLinkAlreadySubmitted;
 use App\Http\Requests\CommunityLinkForm;
 
 class CommunityLinksController extends Controller
-{
+{   
+    /**
+     * get all contributions by users.
+     * @param  Channel|null $channel 
+     * @return 
+     */
     public function index(Channel $channel = null)
     {	
         $orderBy = request()->exists('popular') ? 'votes_count' : 'updated_at';
@@ -27,6 +32,12 @@ class CommunityLinksController extends Controller
     	return view('community.index', compact('links', 'channels', 'channel'));	
     }
 
+
+    /**
+     * store the contributions
+     * @param  CommunityLinkForm $form 
+     * @return back()                 
+     */
     public function store(CommunityLinkForm $form)
     {	
         try {
